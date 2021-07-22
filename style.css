@@ -1,0 +1,62 @@
+#app {
+    background: #2703A6;
+    height: 100vh;
+}
+
+a {
+    text-decoration: none;
+}
+
+.neumorph {
+    border-radius: 4px;
+    background: #2703A6;
+    box-shadow:  5px 5px 7px #100142, -5px -5px 7px #3e05ff;
+    cursor: pointer;
+}
+
+.input input {
+    width: 100%;
+    background: transparent;
+    outline: none;
+}
+
+.input button {
+    width: 60px;
+}
+
+.input button img {
+    filter: invert(1);
+    width: 100%;
+}
+
+.secondary-color {
+    color: #9F84FF;
+    font-weight: 500;
+}
+
+#moeda, #n {
+    border: none;
+    font-size: 22px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+#n::placeholder {
+    font-weight: 500;
+    color: #9F84FF;
+}
+
+#resultado {
+    font-weight: 800;
+	text-transform: uppercase;
+    color: #2703A6; 
+    text-shadow: 5px 5px 10px #000002, -5px -5px 10px #4e06ff;
+}
+
+#btn:hover {
+    color: #9F84FF;
+}

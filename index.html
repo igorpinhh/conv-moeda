@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="imgs/coin.svg" type="image/x-icon">
+    <title>Conversor de moedas</title>
+  </head>
+  <body>
+    <div class="container-fluid d-flex justify-content-center" id="app">
+      <a href="https://github.com/igorpinhh" target="_blank" class="fixed-top m-1 text-white-50 h6 text-uppercase col-2">igorpinhh</a>
+      <div class="row justify-content-center align-items-center w-100">
+        <div class="col-md-5 col-sm-6">
+          <div class="input mt-5 neumorph d-flex align-items-center justify-content-center secondary-color">
+            <button class="m-0 p-4 py-3 btn d-flex align-items-center justify-content-center" id="more"> <img src="imgs/plus.png"> </button>
+            <button class="m-0 p-4 py-3 btn d-flex align-items-center justify-content-center" id="less"> <img src="imgs/minus-sign.png"> </button>
+            <input type="number" placeholder="Ex: 4,00" class="secondary-color" min="0" id="n"/>
+          </div>
+          <select class="my-4 form-select neumorph secondary-color" id="moeda">
+            <option value="dolar" class="m-1" id="dolar" selected>Dolar</option>
+            <option value="euro" class="m-1" id="euro">Euro</option>
+          </select>
+          <div class="d-grid">
+            <button type="button" class="my-2 btn btn-lg p-3 neumorph secondary-color" id="btn">Ver</button>
+          </div>
+          <div class="h1 display-1 resultado my-2 d-flex justify-content-center secondary-color" id="resultado">0</div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
