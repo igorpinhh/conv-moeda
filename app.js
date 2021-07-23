@@ -5,6 +5,7 @@ const btn = document.querySelector("#btn");
 const less = document.querySelector("#less");
 const more = document.querySelector("#more");
 const input = document.querySelector("input");
+const reset = document.querySelector("#reset");
 
 const ajax = () => {
   const number = document.querySelector("input").value;
@@ -63,3 +64,8 @@ input.addEventListener("keydown", function(event) {
 });
 
 input.focus()
+
+reset.addEventListener('click', ()=> {
+  input.value = '';
+  div.innerHTML = 0;
+});

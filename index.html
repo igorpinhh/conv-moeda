@@ -14,11 +14,42 @@
       <div class="row justify-content-center align-items-center w-100">
         <div class="col-md-5 col-sm-6">
           <div class="input mt-5 neumorph d-flex align-items-center justify-content-center secondary-color">
-            <button class="m-0 p-4 py-3 btn d-flex align-items-center justify-content-center" id="more"> <img src="imgs/plus.png"> </button>
-            <button class="m-0 p-4 py-3 btn d-flex align-items-center justify-content-center" id="less"> <img src="imgs/minus-sign.png"> </button>
-            <input type="number" placeholder="Ex: 4,00" class="secondary-color" min="0" id="n"/>
+            <button class="m-0 p-2 btn d-flex align-items-center justify-content-center" id="more"> 
+              <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                 viewBox="0 0 349.03 349.031" style="enable-background:new 0 0 349.03 349.031;"
+                xml:space="preserve">
+                <g>
+                <path d="M349.03,141.226v66.579c0,5.012-4.061,9.079-9.079,9.079H216.884v123.067c0,5.019-4.067,9.079-9.079,9.079h-66.579
+                  c-5.009,0-9.079-4.061-9.079-9.079V216.884H9.079c-5.016,0-9.079-4.067-9.079-9.079v-66.579c0-5.013,4.063-9.079,9.079-9.079
+                  h123.068V9.079c0-5.018,4.069-9.079,9.079-9.079h66.579c5.012,0,9.079,4.061,9.079,9.079v123.068h123.067
+                  C344.97,132.147,349.03,136.213,349.03,141.226z"/></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g>
+              </svg> 
+            </button>
+            <button class="m-0 p-2 btn d-flex align-items-center justify-content-center" id="less"> 
+              <svg version="1.1"id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+               viewBox="0 0 83 83" style="enable-background:new 0 0 83 83;" xml:space="preserve">
+                <g>
+                <path d="M81,36.166H2c-1.104,0-2,0.896-2,2v6.668c0,1.104,0.896,2,2,2h79c1.104,0,2-0.896,2-2v-6.668
+                  C83,37.062,82.104,36.166,81,36.166z"/></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g>
+            </svg>  
+            </button>
+            <div class="d-flex text-center justify-content-center align-items-center w-100">
+              <span class="fs-4 real">R$:</span>
+              <input type="number" placeholder="4,00" class=" ms-2 fs-5 secondary-color border-0" min="0" id="n"/>
+            </div>
+            <button type="button" class="my-2 btn btn-sm p3" id="reset">
+              <svg version="1.1" id="Icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+                viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
+                <path class="st0" d="M14,17V3c0-1.1,0.9-2,2-2h0c1.1,0,2,0.9,2,2v14"/>
+                <line class="st0" x1="14" y1="14" x2="18" y2="14"/>
+                <path class="st0" d="M26,31H6l2.7-12.4c0.2-0.9,1-1.6,2-1.6h10.8c0.9,0,1.8,0.7,2,1.6L26,31z"/>
+                <line class="st0" x1="9" y1="21" x2="23" y2="21"/>
+                <line class="st0" x1="11" y1="27" x2="11" y2="30"/>
+                <line class="st0" x1="21" y1="29" x2="21" y2="30"/>
+              </svg>
+            </button>
           </div>
-          <select class="my-4 form-select neumorph secondary-color" id="moeda">
+          <select class="my-4 form-select neumorph secondary-color border-0" id="moeda">
             <option value="dolar" class="m-1" id="dolar" selected>Dolar</option>
             <option value="euro" class="m-1" id="euro">Euro</option>
           </select>
@@ -31,5 +62,7 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="app.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   </body>
 </html>

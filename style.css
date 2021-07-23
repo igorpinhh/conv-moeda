@@ -1,6 +1,7 @@
 #app {
-    background: #2703A6;
+    background: #121e30;
     height: 100vh;
+    font-family: 'Encode Sans SC', sans-serif;
 }
 
 a {
@@ -8,11 +9,18 @@ a {
 }
 
 .neumorph {
-    border-radius: 4px;
-    background: #2703A6;
-    box-shadow:  5px 5px 7px #100142, -5px -5px 7px #3e05ff;
     cursor: pointer;
+    border-radius: 4px;
+    background: linear-gradient(145deg, #132033, #101b2b);
+    box-shadow:  2px 2px 4px #070c13,
+                 -2px -2px 4px #1d304d;
 }
+
+.real {
+    color: #5274a7; 
+    font-weight: 400;
+}
+
 
 .input input {
     width: 100%;
@@ -20,23 +28,28 @@ a {
     outline: none;
 }
 
-.input button {
-    width: 60px;
+.input svg {
+    width: 25px;
+    height: 25px;
+    fill: #5274a7;
+    padding: 6px;
+    font-size: 19px;
+    border-radius: 6px;
+background: linear-gradient(145deg, #132033, #101b2b);
+box-shadow:  1px 1px 2px #070c13,
+             -1px -1px 2px #1d304d;
 }
 
-.input button img {
-    filter: invert(1);
-    width: 100%;
+.input svg:active {
+    border-radius: 6px;
+    background: #121e30;
+    box-shadow: inset 1px 1px 2px #070c13,
+                inset -1px -1px 2px #1d304d;
 }
 
 .secondary-color {
-    color: #9F84FF;
-    font-weight: 500;
-}
-
-#moeda, #n {
-    border: none;
-    font-size: 22px;
+    color: #92baf7;
+    font-weight: 400;
 }
 
 input::-webkit-outer-spin-button,
@@ -47,16 +60,35 @@ input::-webkit-inner-spin-button {
 
 #n::placeholder {
     font-weight: 500;
-    color: #9F84FF;
+    color: #92baf7;
 }
+
+#reset {
+    margin: 0 auto;
+
+}
+
+#reset svg {
+    background: none;
+    fill:none;
+    stroke:#92baf7;
+    stroke-width:2;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+    stroke-miterlimit:10;
+    /* filter: invert(1); */
+}
+
 
 #resultado {
     font-weight: 800;
 	text-transform: uppercase;
-    color: #2703A6; 
-    text-shadow: 5px 5px 10px #000002, -5px -5px 10px #4e06ff;
+    border-radius: 8px;
+    /* background: linear-gradient(145deg, #132033, #101b2b); */
+    text-shadow:  4px 4px 7px #0a111b,
+                 -4px -4px 7px #1a2b45;
 }
 
 #btn:hover {
-    color: #9F84FF;
+    color: #92baf7;
 }
