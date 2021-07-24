@@ -23,7 +23,6 @@ const ajax = () => {
       let ltc = api.LTC.high;
       let chf = api.CHF.high
       let aud = api.AUD.high
-      // console.log(dolar);
 
       if (moeda.value === "dolar") {
         let f = number / dolar;

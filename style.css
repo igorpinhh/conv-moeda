@@ -49,9 +49,9 @@ a {
 }
 
 #status img {
-    width: 40px;
-    height: 20px;
-    filter: hue-rotate(80deg) invert(1);
+    width: 28px;
+    height: 28px;
+    margin: 10px;
 }
 
 .input svg:active {
