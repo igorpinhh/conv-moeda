@@ -26,46 +26,48 @@ const ajax = () => {
 
       if (moeda.value === "dolar") {
         let f = number / dolar;
+        dolar = parseFloat(dolar)
         div.innerHTML = '$ ' + f.toFixed(2);
-        // console.log();
-        status.innerHTML = '$ ' + dolar
+        status.innerHTML = '$ ' + dolar.toFixed(2)
       } 
 
       else if (moeda.value === "") {
-        status.innerHTML = '';
+        status.innerHTML = '0.00';
       } 
       
       else if (moeda.value === "euro") {
         let f = number / euro;
+        euro = parseFloat(euro)
         div.innerHTML = '€ ' + f.toFixed(2);
-        status.innerHTML = '$ ' + euro;
+        status.innerHTML = '$ ' + euro.toFixed(2);
       } 
 
       else if (moeda.value === "cad") {
-        let x = parseFloat(cad, 2).toFixed(2);
-        let f = number / x;
+        cad = parseFloat(cad)
+        let f = number / cad;
         div.innerHTML = '€ ' + f.toFixed(2);
-        status.innerHTML = '$ ' + cad;
+        status.innerHTML = '$ ' + cad.toFixed(2);
       }
 
       else if (moeda.value === "ltc") {
         let f = number / ltc;
+        ltc = parseFloat(ltc)
         div.innerHTML = '€ ' + f.toFixed(2);
-        status.innerHTML = '$ ' + ltc;
+        status.innerHTML = '$ ' + ltc.toFixed(2);
       }
 
       else if (moeda.value === "aud") {
-        let x = parseFloat(aud, 2).toFixed(2);
-        let f = number / x;
+        aud = parseFloat(aud)
+        let f = number / aud;
         div.innerHTML = '€ ' + f.toFixed(2);
-        status.innerHTML = '$ ' + aud;
+        status.innerHTML = '$ ' + aud.toFixed(2);
       }
 
       else if (moeda.value === "chf") {
-        let x = parseFloat(chf, 2).toFixed(2);
-        let f = number / x;
+        chf = parseFloat(chf)
+        let f = number / chf;
         div.innerHTML = '€ ' + f.toFixed(2);
-        status.innerHTML = '$ ' + chf;
+        status.innerHTML = '$ ' + chf.toFixed(2);
       }
       
       else {
