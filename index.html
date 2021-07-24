@@ -10,11 +10,11 @@
   </head>
   <body>
     <div class="container-fluid d-flex justify-content-center" id="app">
-      <a href="https://github.com/igorpinhh" target="_blank" class="fixed-top m-1 text-white-50 h6 text-uppercase col-2">igorpinhh</a>
+      <a href="https://github.com/igorpinhh" target="_blank" class="fixed-top p-1 text-white-50 h6">IGORPINHH</a>
       <div class="row justify-content-center align-items-center w-100">
         <div class="col-md-5 col-sm-6">
-          <div class="input mt-5 neumorph d-flex align-items-center justify-content-center secondary-color">
-            <button class="m-0 p-2 btn d-flex align-items-center justify-content-center" id="more"> 
+          <div class="input mt-5 neumorph d-flex align-items-center secondary-color">
+            <button class="m-0 p-2 btn" id="more"> 
               <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                  viewBox="0 0 349.03 349.031" style="enable-background:new 0 0 349.03 349.031;"
                 xml:space="preserve">
@@ -25,7 +25,7 @@
                   C344.97,132.147,349.03,136.213,349.03,141.226z"/></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g>
               </svg> 
             </button>
-            <button class="m-0 p-2 btn d-flex align-items-center justify-content-center" id="less"> 
+            <button class="m-0 p-2 btn" id="less"> 
               <svg version="1.1"id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                viewBox="0 0 83 83" style="enable-background:new 0 0 83 83;" xml:space="preserve">
                 <g>
@@ -33,7 +33,7 @@
                   C83,37.062,82.104,36.166,81,36.166z"/></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g><g></g>
             </svg>  
             </button>
-            <div class="d-flex text-center justify-content-center align-items-center w-100">
+            <div class="d-flex w-100">
               <span class="fs-4 real">R$:</span>
               <input type="number" placeholder="4,00" class=" ms-2 fs-5 secondary-color border-0" min="0" id="n"/>
             </div>
@@ -49,10 +49,26 @@
               </svg>
             </button>
           </div>
-          <select class="my-4 form-select neumorph secondary-color border-0" id="moeda">
-            <option value="dolar" class="m-1" id="dolar" selected>Dolar</option>
-            <option value="euro" class="m-1" id="euro">Euro</option>
-          </select>
+
+          <div class="neumorph p-0 my-4 d-flex column align-items-center justify-content-between">
+            <select class="p-3 secondary-color" id="moeda">
+              <option value="" selected>Escolher moeda...</option>
+              <option value="dolar" class="m-1" id="dolar">Dolar</option>
+              <option value="euro" class="m-1" id="euro">Euro</option>
+              <option value="cad" class="m-1" id="cad">Dólar Canadense</option>
+              <option value="ltc" class="m-1" id="ltc">Litecoin</option>
+              <option value="chf" class="m-1" id="chf">Franco Suíço</option>
+              <option value="aud" class="m-1" id="aud">Dólar Australiano</option>
+            </select>
+
+            <div id="status" class="mx-3 d-flex justify-content-center align-items-center flex-column">
+              <!-- <img src="imgs/lifeline-hand-drawn-status-line.png"> -->
+              <span class="secondary-color">Quotation</span>
+              <span id="cotacao" class="secondary-color p-0 m-0 a">$ 0.0000</span>
+            </div>
+
+          </div>
+
           <div class="d-grid">
             <button type="button" class="my-2 btn btn-lg p-3 neumorph secondary-color" id="btn">Ver</button>
           </div>
@@ -62,7 +78,5 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src="app.js"></script>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
   </body>
 </html>

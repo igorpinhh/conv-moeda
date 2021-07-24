@@ -12,8 +12,7 @@ a {
     cursor: pointer;
     border-radius: 4px;
     background: linear-gradient(145deg, #132033, #101b2b);
-    box-shadow:  2px 2px 4px #070c13,
-                 -2px -2px 4px #1d304d;
+    box-shadow:  2px 2px 4px #070c13, -2px -2px 4px #1d304d;
 }
 
 .real {
@@ -21,6 +20,16 @@ a {
     font-weight: 400;
 }
 
+#moeda {
+    border: none;
+    background: none;
+    cursor: pointer;
+    position: relative;
+}
+
+#moeda option {
+    background: #1d304d;
+}
 
 .input input {
     width: 100%;
@@ -35,16 +44,20 @@ a {
     padding: 6px;
     font-size: 19px;
     border-radius: 6px;
-background: linear-gradient(145deg, #132033, #101b2b);
-box-shadow:  1px 1px 2px #070c13,
-             -1px -1px 2px #1d304d;
+    background: linear-gradient(145deg, #132033, #101b2b);
+    box-shadow:  1px 1px 2px #070c13, -1px -1px 2px #1d304d;
+}
+
+#status img {
+    width: 40px;
+    height: 20px;
+    filter: hue-rotate(80deg) invert(1);
 }
 
 .input svg:active {
     border-radius: 6px;
     background: #121e30;
-    box-shadow: inset 1px 1px 2px #070c13,
-                inset -1px -1px 2px #1d304d;
+    box-shadow: inset 1px 1px 2px #070c13, inset -1px -1px 2px #1d304d;
 }
 
 .secondary-color {
@@ -60,7 +73,7 @@ input::-webkit-inner-spin-button {
 
 #n::placeholder {
     font-weight: 500;
-    color: #92baf7;
+    color: #445c80;
 }
 
 #reset {
@@ -76,19 +89,16 @@ input::-webkit-inner-spin-button {
     stroke-linecap:round;
     stroke-linejoin:round;
     stroke-miterlimit:10;
-    /* filter: invert(1); */
 }
-
 
 #resultado {
     font-weight: 800;
 	text-transform: uppercase;
     border-radius: 8px;
     /* background: linear-gradient(145deg, #132033, #101b2b); */
-    text-shadow:  4px 4px 7px #0a111b,
-                 -4px -4px 7px #1a2b45;
+    text-shadow:  4px 4px 7px #0a111b, -4px -4px 7px #1a2b45;
 }
 
-#btn:hover {
+#btn, #lightswitch:hover {
     color: #92baf7;
 }
