@@ -32,7 +32,7 @@ const ajax = () => {
       } 
 
       else if (moeda.value === "") {
-        status.innerHTML = '0.00';
+        status.innerHTML = '$ 0.00';
       } 
       
       else if (moeda.value === "euro") {
