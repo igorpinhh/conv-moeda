@@ -9,11 +9,24 @@
     <title>Conversor de moedas</title>
   </head>
   <body>
-    <div class="container-fluid d-flex justify-content-center" id="app">
-      <a href="https://github.com/igorpinhh" target="_blank" class="fixed-top p-1 text-white-50 h6">IGORPINHH</a>
+    <div class="container-fluid d-flex justify-content-center theme-1" id="app">
+      <a href="https://github.com/igorpinhh" target="_blank" class="fixed-top col-1 p-1 text-white-50 h6">IGORPINHH</a>
       <div class="row justify-content-center align-items-center w-100">
         <div class="col-md-5 col-sm-6">
-          <div class="input mt-5 neumorph d-flex align-items-center secondary-color">
+
+          <div class="colors m-1 my-2"> 
+
+            <button class="btn p-0 neumorph m-0 border-0 rounded-circle" id="th1">
+              <div class="th1 rounded-circle m-0"></div>
+            </button>
+
+            <button  class="btn p-0 neumorph m-0 border-0 rounded-circle" id="th2">
+              <div class="th2 rounded-circle"></div>
+            </button> 
+
+          </div>
+
+          <div class="input neumorph d-flex align-items-center secondary-color">
             <button class="m-0 p-2 btn" id="more"> 
               <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                  viewBox="0 0 349.03 349.031" style="enable-background:new 0 0 349.03 349.031;"
@@ -50,20 +63,27 @@
             </button>
           </div>
 
-          <div class="neumorph my-4 d-flex column align-items-center justify-content-between">
+          <div class="neumorph my-4 d-flex column align-items-center justify-content-between" id="error-target">
             <select class="p-3 secondary-color w-50" id="moeda">
-              <option value="" class="m-2 fs-5" selected>Moeda</option>
-              <option value="dolar" class="m-1 fs-5" id="dolar">Dólar</option>
-              <option value="euro" class="m-1 fs-5" id="euro">Euro</option>
-              <option value="cad" class="m-1 fs-5" id="cad">Dólar Canadense</option>
-              <option value="ltc" class="m-1 fs-5" id="ltc">Litecoin</option>
-              <option value="chf" class="m-1 fs-5" id="chf">Franco Suíço</option>
-              <option value="aud" class="m-1 fs-5" id="aud">Dólar Australiano</option>
+              <option value="" selected>Moeda</option>
+              <option value="dolar" id="dolar">Dólar</option>
+              <option value="euro" id="euro">Euro</option>
+              <option value="cad" id="cad">Dólar Canadense</option>
+              <option value="ltc" id="ltc">Litecoin</option>
+              <option value="chf" id="chf">Franco Suíço</option>
+              <option value="aud" id="aud">Dólar Australiano</option>
             </select>
 
             <div id="status" class="mx-1 d-flex justify-content-center align-items-center flex-row flex-nowrap">
-              <img src="imgs/search.png">
-              <span id="cotacao" class="secondary-color fw-bold text-center p-2 m-1 text-nowrap">$ 0.00</span>
+              <!-- <img src="imgs/search.png"> -->
+              <svg data-name="Layer 1" id="Layer_1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                <path d="M484.66,42.55a11.91,11.91,0,0,0-10.93-7.32H384.62a11.85,11.85,0,0,0,0,23.7h60.5L308.55,195.51l-75.33-75.33a11.85,11.85,0,0,0-16.76,0L29.89,306.75a11.85,11.85,0,0,0,16.76,16.76L224.84,145.32l75.33,75.32a11.85,11.85,0,0,0,16.76,0l145-144.95v60.5a11.85,11.85,0,1,0,23.7,0V47.08A11.87,11.87,0,0,0,484.66,42.55Z"/>
+                <polygon points="292.21 321.35 292.21 476.77 342.99 476.77 342.99 303.25 308.55 337.69 292.21 321.35"/><polygon points="358.79 476.77 409.55 476.77 409.55 236.68 358.79 287.44 358.79 476.77"/><polygon points="159.06 476.77 209.82 476.77 209.82 269 159.06 319.76 159.06 476.77"/>
+                <path d="M425.35,476.77h48.38V172.5l-48.38,48.38Z"/>
+                <polygon points="38.28 476.77 76.68 476.77 76.68 402.15 38.28 440.55 38.28 476.77"/><polygon points="92.48 476.77 143.26 476.77 143.26 335.56 92.48 386.35 92.48 476.77"/>
+                <polygon points="225.63 476.77 276.41 476.77 276.41 305.55 225.63 254.76 225.63 476.77"/>
+              </svg>
+              <span id="cotacao" class="fw-bold text-center p-2 m-1 text-nowrap">$ 0.00</span>
             </div>
 
           </div>
@@ -71,7 +91,7 @@
           <div class="d-grid">
             <button type="button" class="my-2 btn btn-lg p-3 neumorph secondary-color" id="btn">Ver</button>
           </div>
-          <div class="h1 display-1 resultado my-2 d-flex justify-content-center secondary-color" id="resultado">0</div>
+          <div class="h1 display-1 resultado my-2 d-flex justify-content-center secondary-color" id="resultado">$ 0.00</div>
         </div>
       </div>
     </div>

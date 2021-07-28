@@ -7,67 +7,65 @@ const less = document.querySelector("#less");
 const more = document.querySelector("#more");
 const input = document.querySelector("input");
 const reset = document.querySelector("#reset");
+const dark = document.querySelector('#th1');
+const light = document.querySelector('#th2');
+const app = document.querySelector('#app');
+const number = document.querySelector("#n");
+const moeda = document.querySelector("#moeda");
+const status = document.querySelector('#cotacao');
+
+input.focus();
+
+const calc = (value, moeda) => {
+  let f = value / moeda;
+  moeda = parseFloat(moeda);
+  div.innerHTML = '$ ' + f.toFixed(2);
+  status.innerHTML = '$ ' + moeda.toFixed(2);
+};
 
 const ajax = () => {
-  const number = document.querySelector("input").value;
-  const moeda = document.querySelector("#moeda");
-  const status = document.querySelector('#cotacao')
+  
+  let v = moeda.value;
 
   fetch(url)
     .then((resp) => resp.json())
     .then((data) => {
+
       const api = data;
+
       let dolar = api.USD.high;
       let euro = api.EUR.high;
       let cad = api.CAD.high;
       let ltc = api.LTC.high;
-      let chf = api.CHF.high
-      let aud = api.AUD.high
+      let chf = api.CHF.high;
+      let aud = api.AUD.high;
 
-      if (moeda.value === "dolar") {
-        let f = number / dolar;
-        dolar = parseFloat(dolar)
-        div.innerHTML = '$ ' + f.toFixed(2);
-        status.innerHTML = '$ ' + dolar.toFixed(2)
+      if (v === "dolar") {
+        calc(number.value, dolar);
       } 
 
-      else if (moeda.value === "") {
+      else if (v === "") {
         status.innerHTML = '$ 0.00';
       } 
       
-      else if (moeda.value === "euro") {
-        let f = number / euro;
-        euro = parseFloat(euro)
-        div.innerHTML = '€ ' + f.toFixed(2);
-        status.innerHTML = '$ ' + euro.toFixed(2);
+      else if (v === "euro") {
+        calc(number.value, euro);
       } 
 
-      else if (moeda.value === "cad") {
-        cad = parseFloat(cad)
-        let f = number / cad;
-        div.innerHTML = '€ ' + f.toFixed(2);
-        status.innerHTML = '$ ' + cad.toFixed(2);
+      else if (v === "cad") {
+        calc(number.value, cad);
       }
 
-      else if (moeda.value === "ltc") {
-        let f = number / ltc;
-        ltc = parseFloat(ltc)
-        div.innerHTML = '€ ' + f.toFixed(2);
-        status.innerHTML = '$ ' + ltc.toFixed(2);
+      else if (v === "ltc") {
+        calc(number.value, ltc);
       }
 
-      else if (moeda.value === "aud") {
-        aud = parseFloat(aud)
-        let f = number / aud;
-        div.innerHTML = '€ ' + f.toFixed(2);
-        status.innerHTML = '$ ' + aud.toFixed(2);
+      else if (v === "aud") {
+        calc(number.value, aud);
       }
 
-      else if (moeda.value === "chf") {
-        chf = parseFloat(chf)
-        let f = number / chf;
-        div.innerHTML = '€ ' + f.toFixed(2);
-        status.innerHTML = '$ ' + chf.toFixed(2);
+      else if (v === "chf") {
+        calc(number.value, chf);
       }
       
       else {
@@ -77,37 +75,57 @@ const ajax = () => {
 }
 
 btn.addEventListener("click", () => {
-  ajax()
+  if(number.value >= 1) {
+    ajax()
+  }
 });
 
 less.addEventListener('click', ()=> {
-  let a = document.querySelector("#n");
-  if(a.value <= 0) {
-    return 0
-  } else {
-    a.value -=1
+  if(moeda.value !== "") {
+    if (number.value >= 1) {
+      number.value -=1;
+      ajax();
+    }
   }
-})
+});
 
 more.addEventListener('click', ()=> {
-  let a = document.querySelector("#n");
-  if(a.value <= -1) {
-    return 0
-  } else {
-    a.value ++
+  let v = document.querySelector("#n");
+
+   if(v.value <= -1 || moeda.value != "") {
+     v.value ++
+     ajax();
+   } else {
+     alert('tu tem q escolher uma moeda ai vacilao')
+    // document.querySelector('#error-target').classList.add('erro')
   }
 })
 
 input.addEventListener("keydown", function(event) {
   if (event.keyCode === 13) {
     event.preventDefault();
-    ajax()
+    if(number.value >= 1) {
+      ajax()
+    }
   }
 });
 
-input.focus()
 
 reset.addEventListener('click', ()=> {
   input.value = '';
   div.innerHTML = 0;
 });
+
+dark.addEventListener('click', ()=> {
+  if( app.classList.contains('theme-2') == true ){
+    app.classList.remove('theme-2');
+    app.classList.add('theme-1');
+  }
+})
+
+light.addEventListener('click', ()=> {
+  if( app.classList.contains('theme-1') == true ){
+    app.classList.remove('theme-1');
+    app.classList.add('theme-2');
+  }
+})

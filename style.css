@@ -1,7 +1,43 @@
 #app {
-    background: #121e30;
+    background: var(--bgcolor);
     height: 100vh;
-    font-family: 'Encode Sans SC', sans-serif;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.theme-1 {
+    --bgcolor: #121e30;
+    --gradientcolor1: #132033;
+    --gradientcolor2: #101b2b;
+    --shadow1: #070c13;
+    --shadow2: #1d304d;
+    --primarycolor: #5274a7;
+    --secondarycolor: #92baf7;
+    --optionbg: #1d304d;
+    --placeholder: #445c80;
+}
+
+.th1 {
+    width: 20px;
+    height: 20px;
+    background-image: linear-gradient(145deg, #b7d0f7, #5274a7);
+}
+
+.theme-2 {
+    --bgcolor: #d1d1d1;
+    --gradientcolor1: #e0e0e0;
+    --gradientcolor2: #bcbcbc;
+    --shadow1: #545454;
+    --shadow2: #ffffff;
+    --primarycolor: #5a5a5a;
+    --secondarycolor: #333333;
+    --optionbg: #b6b6b6;
+    --placeholder: #616161;
+}
+
+.th2 {
+    width: 20px;
+    height: 20px;
+    background-image: linear-gradient(145deg, #ffffff, #9c9c9c);
 }
 
 a {
@@ -11,29 +47,26 @@ a {
 .neumorph {
     cursor: pointer;
     border-radius: 4px;
-    background: linear-gradient(145deg, #132033, #101b2b);
-    box-shadow:  2px 2px 4px #070c13, -2px -2px 4px #1d304d;
+    background: linear-gradient(145deg, var(--gradientcolor1), var(--gradientcolor2));
+    box-shadow:  2px 2px 4px var(--shadow1), -2px -2px 4px var(--shadow2);
 }
 
 .real {
-    color: #5274a7; 
+    color: var(--primarycolor); 
     font-weight: 400;
 }
 
 #moeda {
-    /* width: 40%; */
     border: none;
     background: none;
     cursor: pointer;
     position: relative;
+    color: var(--primarycolor); 
 }
 
-/* #cotacao {
-    font-size: 10px;
-} */
-
 #moeda option {
-    background: #1d304d;
+    background: var(--optionbg);
+    color: var(--primarycolor); 
 }
 
 .input input {
@@ -45,27 +78,26 @@ a {
 .input svg {
     width: 25px;
     height: 25px;
-    fill: #5274a7;
+    fill: var(--primarycolor);
     padding: 6px;
     font-size: 19px;
     border-radius: 6px;
-    background: linear-gradient(145deg, #132033, #101b2b);
-    box-shadow:  1px 1px 2px #070c13, -1px -1px 2px #1d304d;
+    background: linear-gradient(145deg, var(--gradientcolor1), var(--gradientcolor2));
+    box-shadow:  1px 1px 2px var(--shadow1), -1px -1px 2px var(--shadow2);
 }
 
-#status img {
-    width: 20px;
-    height: 20px;
+#cotacao {
+    color: var(--secondarycolor);
 }
 
 .input svg:active {
     border-radius: 6px;
-    background: #121e30;
-    box-shadow: inset 1px 1px 2px #070c13, inset -1px -1px 2px #1d304d;
+    background: var(--bgcolor);
+    box-shadow: inset 1px 1px 2px var(--shadow1), inset -1px -1px 2px var(--shadow2);
 }
 
 .secondary-color {
-    color: #92baf7;
+    color: var(--secondarycolor);
     font-weight: 400;
 }
 
@@ -77,18 +109,23 @@ input::-webkit-inner-spin-button {
 
 #n::placeholder {
     font-weight: 500;
-    color: #445c80;
+    color: var(--placeholder);
 }
 
 #reset {
     margin: 0 auto;
+    color: var(--placeholder);
+}
 
+#status svg {
+    fill: var(--secondarycolor);
+    width: 22px;
 }
 
 #reset svg {
     background: none;
     fill:none;
-    stroke:#92baf7;
+    stroke:var(--primarycolor);
     stroke-width:2;
     stroke-linecap:round;
     stroke-linejoin:round;
@@ -99,10 +136,9 @@ input::-webkit-inner-spin-button {
     font-weight: 800;
 	text-transform: uppercase;
     border-radius: 8px;
-    /* background: linear-gradient(145deg, #132033, #101b2b); */
-    text-shadow:  4px 4px 7px #0a111b, -4px -4px 7px #1a2b45;
+    text-shadow:  4px 4px 7px var(--shadow1), -4px -4px 7px var(--shadow2);
 }
 
-#btn, #lightswitch:hover {
-    color: #92baf7;
+#btn:hover {
+    color: var(--primarycolor);
 }
