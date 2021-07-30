@@ -7,25 +7,24 @@ const less = document.querySelector("#less");
 const more = document.querySelector("#more");
 const input = document.querySelector("input");
 const reset = document.querySelector("#reset");
-const dark = document.querySelector('#th1');
-const light = document.querySelector('#th2');
 const app = document.querySelector('#app');
 const number = document.querySelector("#n");
-const moeda = document.querySelector("#moeda");
-const status = document.querySelector('#cotacao');
+const option = document.querySelector('#esc');
+const op = document.querySelectorAll('.option');
+const darkmode = document.querySelector('#toggle');
+const drop = document.querySelector('#drop')
 
 input.focus();
 
-const calc = (value, moeda) => {
-  let f = value / moeda;
-  moeda = parseFloat(moeda);
+const calc = (value, coin) => {
+  let f = value / coin;
+  coin = parseFloat(coin);
   div.innerHTML = '$ ' + f.toFixed(2);
-  status.innerHTML = '$ ' + moeda.toFixed(2);
 };
 
-const ajax = () => {
+const convert = () => {
   
-  let v = moeda.value;
+  let v = option.value;
 
   fetch(url)
     .then((resp) => resp.json())
@@ -40,7 +39,7 @@ const ajax = () => {
       let chf = api.CHF.high;
       let aud = api.AUD.high;
 
-      if (v === "dolar") {
+      if (v === "dol") {
         calc(number.value, dolar);
       } 
 
@@ -48,7 +47,7 @@ const ajax = () => {
         status.innerHTML = '$ 0.00';
       } 
       
-      else if (v === "euro") {
+      else if (v === "eur") {
         calc(number.value, euro);
       } 
 
@@ -69,63 +68,117 @@ const ajax = () => {
       }
       
       else {
-        div.innerHTML = "deu erro ai vacilao";
+        return 0
     }
   });
 }
 
+const updateStatus = ()=> {
+
+  let c = option.value;
+  const status = document.querySelector('#cotacao');
+
+  fetch(url)
+    .then((resp) => resp.json())
+    .then((data) => {
+
+      const api = data;
+
+      let dolar = api.USD.high;
+      let euro = api.EUR.high;
+      let cad = api.CAD.high;
+      let ltc = api.LTC.high;
+      let chf = api.CHF.high;
+      let aud = api.AUD.high;
+
+      if (c === 'dol') {
+        const d = parseFloat(dolar)
+        status.innerHTML = `$  ${d.toFixed(2)}`;
+      }
+
+      if (c === 'eur') {
+        const d = parseFloat(euro)
+        status.innerHTML = `$  ${d.toFixed(2)}`;
+      }
+
+      if (c === 'cad') {
+        const d = parseFloat(cad)
+        status.innerHTML = `$  ${d.toFixed(2)}`;
+      }
+
+      if (c === 'ltc') {
+        const d = parseFloat(ltc)
+        status.innerHTML = `$  ${d.toFixed(2)}`;
+      }
+
+      if (c === 'chf') {
+        const d = parseFloat(chf)
+        status.innerHTML = `$  ${d.toFixed(2)}`;
+      }
+
+      if (c === 'aud') {
+        const d = parseFloat(aud)
+        status.innerHTML = `$  ${d.toFixed(2)}`;
+      }
+    })
+}
+
 btn.addEventListener("click", () => {
   if(number.value >= 1) {
-    ajax()
+    convert();
   }
 });
 
 less.addEventListener('click', ()=> {
-  if(moeda.value !== "") {
-    if (number.value >= 1) {
-      number.value -=1;
-      ajax();
-    }
+  if (number.value >= 1) {
+    number.value -=1;
+    convert();
   }
 });
 
 more.addEventListener('click', ()=> {
-  let v = document.querySelector("#n");
-
-   if(v.value <= -1 || moeda.value != "") {
-     v.value ++
-     ajax();
-   } else {
-     alert('tu tem q escolher uma moeda ai vacilao')
-    // document.querySelector('#error-target').classList.add('erro')
-  }
-})
+   if(number.value >= 0) {
+     number.value ++
+     convert();
+   }
+});
 
 input.addEventListener("keydown", function(event) {
   if (event.keyCode === 13) {
     event.preventDefault();
     if(number.value >= 1) {
-      ajax()
+      convert();
     }
   }
 });
 
-
 reset.addEventListener('click', ()=> {
   input.value = '';
-  div.innerHTML = 0;
+  div.innerHTML = '$ 0.00';
+  option.innerHTML = 'Moeda';
+  option.value = '';
 });
 
-dark.addEventListener('click', ()=> {
-  if( app.classList.contains('theme-2') == true ){
-    app.classList.remove('theme-2');
-    app.classList.add('theme-1');
-  }
+const dropAnim = (val)=> {
+  val.classList.toggle('dropoff');
+  val.classList.toggle('dropon');
+}
+
+
+drop.addEventListener('click', ()=> {
+  dropAnim(document.querySelector('#b'));
 })
 
-light.addEventListener('click', ()=> {
-  if( app.classList.contains('theme-1') == true ){
-    app.classList.remove('theme-1');
-    app.classList.add('theme-2');
-  }
+op.forEach(item => {
+  item.addEventListener('click', ()=> {
+    dropAnim(document.querySelector('#b'));
+    option.innerHTML = item.innerHTML;
+    option.value = item.id;
+    updateStatus();
+  })
+})
+
+darkmode.addEventListener('click', ()=> {
+  app.classList.toggle('theme-2')
+  app.classList.toggle('theme-1')
 })

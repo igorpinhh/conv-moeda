@@ -2,6 +2,42 @@
     background: var(--bgcolor);
     height: 100vh;
     font-family: 'Montserrat', sans-serif;
+    opacity: 1;
+    animation: fullfade 1s linear;
+}
+
+@keyframes fullfade {
+    0% {
+        visibility: hidden;
+        width: 0;
+        opacity: 0;
+    }
+    
+    5% {
+        visibility: visible;
+        width: 50%;
+    }
+    
+    25% {
+        opacity: 0;
+        width: 100%;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.toggle {
+    width: 30px;
+    height: 30px;
+}
+
+.toggle svg {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    fill: var(--secondarycolor)
 }
 
 .theme-1 {
@@ -14,12 +50,7 @@
     --secondarycolor: #92baf7;
     --optionbg: #1d304d;
     --placeholder: #445c80;
-}
-
-.th1 {
-    width: 20px;
-    height: 20px;
-    background-image: linear-gradient(145deg, #b7d0f7, #5274a7);
+    transition: all 140ms ease-in-out;
 }
 
 .theme-2 {
@@ -32,12 +63,7 @@
     --secondarycolor: #333333;
     --optionbg: #b6b6b6;
     --placeholder: #616161;
-}
-
-.th2 {
-    width: 20px;
-    height: 20px;
-    background-image: linear-gradient(145deg, #ffffff, #9c9c9c);
+    transition: all 140ms ease-in-out;
 }
 
 a {
@@ -62,11 +88,39 @@ a {
     cursor: pointer;
     position: relative;
     color: var(--primarycolor); 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
 }
 
-#moeda option {
-    background: var(--optionbg);
-    color: var(--primarycolor); 
+#drop svg {
+    width: 20px;
+    fill: var(--secondarycolor);
+    transition: all 100ms ease-in-out;
+}
+
+#drop::selection svg {
+    transform: rotate(0deg);
+    transition: all 100ms ease-in-out;
+}
+
+.dropoff {
+    display: none;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropon {
+    display: inline-block !important;
+    color: var(--secondarycolor) !important;
+    background: var(--shadow2) !important;
+    position: absolute !important;
+    top: 100%;
+    margin-top: 10px;
+    border-radius: 3px;
 }
 
 .input input {
@@ -77,8 +131,7 @@ a {
 
 .input svg {
     width: 25px;
-    height: 25px;
-    fill: var(--primarycolor);
+    fill: var(--secondarycolor);
     padding: 6px;
     font-size: 19px;
     border-radius: 6px;
@@ -114,22 +167,18 @@ input::-webkit-inner-spin-button {
 
 #reset {
     margin: 0 auto;
-    color: var(--placeholder);
 }
 
 #status svg {
     fill: var(--secondarycolor);
-    width: 22px;
+    width: 25px;
 }
 
 #reset svg {
-    background: none;
-    fill:none;
-    stroke:var(--primarycolor);
-    stroke-width:2;
-    stroke-linecap:round;
-    stroke-linejoin:round;
-    stroke-miterlimit:10;
+    width: 25px;
+    fill: none;
+    stroke: var(--secondarycolor);
+    stroke-width: 2;
 }
 
 #resultado {
@@ -142,3 +191,9 @@ input::-webkit-inner-spin-button {
 #btn:hover {
     color: var(--primarycolor);
 }
+
+#btn svg {
+    width: 25px;
+    fill: var(--secondarycolor)
+}
+
