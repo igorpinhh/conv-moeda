@@ -1,6 +1,4 @@
 const url = "https://economia.awesomeapi.com.br/all";
-
-
 const div = document.querySelector(".resultado");
 const btn = document.querySelector("#btn");
 const less = document.querySelector("#less");
@@ -13,8 +11,7 @@ const option = document.querySelector('#esc');
 const op = document.querySelectorAll('.option');
 const darkmode = document.querySelector('#toggle');
 const drop = document.querySelector('#drop')
-
-input.focus();
+const status = document.querySelector('#cotacao');
 
 const calc = (value, coin) => {
   let f = value / coin;
@@ -32,50 +29,26 @@ const convert = () => {
 
       const api = data;
 
-      let dolar = api.USD.high;
-      let euro = api.EUR.high;
-      let cad = api.CAD.high;
-      let ltc = api.LTC.high;
-      let chf = api.CHF.high;
-      let aud = api.AUD.high;
+      const coins = [
+        [`${api.USD.high}`, "dol"], 
+        [`${api.EUR.high}`, "eur"], 
+        [`${api.CAD.high}`, "cad"], 
+        [`${api.LTC.high}`, "ltc"],
+        [`${api.CHF.high}`, "chf"], 
+        [`${api.AUD.high}`, "aud"]
+      ];
 
-      if (v === "dol") {
-        calc(number.value, dolar);
-      } 
-
-      else if (v === "") {
-        status.innerHTML = '$ 0.00';
-      } 
-      
-      else if (v === "eur") {
-        calc(number.value, euro);
-      } 
-
-      else if (v === "cad") {
-        calc(number.value, cad);
-      }
-
-      else if (v === "ltc") {
-        calc(number.value, ltc);
-      }
-
-      else if (v === "aud") {
-        calc(number.value, aud);
-      }
-
-      else if (v === "chf") {
-        calc(number.value, chf);
-      }
-      
-      else {
-        return 0
-    }
+      coins.forEach(c => {
+        if (v === c[1]) {
+          calc(number.value, c[0])
+        }
+      })
   });
 }
 
 const updateStatus = ()=> {
 
-  let c = option.value;
+  let val = option.value;
   const status = document.querySelector('#cotacao');
 
   fetch(url)
@@ -84,43 +57,22 @@ const updateStatus = ()=> {
 
       const api = data;
 
-      let dolar = api.USD.high;
-      let euro = api.EUR.high;
-      let cad = api.CAD.high;
-      let ltc = api.LTC.high;
-      let chf = api.CHF.high;
-      let aud = api.AUD.high;
+      const coins = [
+        [`${api.USD.high}`, "dol"], 
+        [`${api.EUR.high}`, "eur"], 
+        [`${api.CAD.high}`, "cad"], 
+        [`${api.LTC.high}`, "ltc"],
+        [`${api.CHF.high}`, "chf"], 
+        [`${api.AUD.high}`, "aud"]
+      ];
 
-      if (c === 'dol') {
-        const d = parseFloat(dolar)
-        status.innerHTML = `$  ${d.toFixed(2)}`;
-      }
-
-      if (c === 'eur') {
-        const d = parseFloat(euro)
-        status.innerHTML = `$  ${d.toFixed(2)}`;
-      }
-
-      if (c === 'cad') {
-        const d = parseFloat(cad)
-        status.innerHTML = `$  ${d.toFixed(2)}`;
-      }
-
-      if (c === 'ltc') {
-        const d = parseFloat(ltc)
-        status.innerHTML = `$  ${d.toFixed(2)}`;
-      }
-
-      if (c === 'chf') {
-        const d = parseFloat(chf)
-        status.innerHTML = `$  ${d.toFixed(2)}`;
-      }
-
-      if (c === 'aud') {
-        const d = parseFloat(aud)
-        status.innerHTML = `$  ${d.toFixed(2)}`;
-      }
-    })
+      coins.forEach(c => {
+        if (val === c[1]) {
+          let stts = parseFloat(c[0]);
+          status.innerHTML = `$ ${stts.toFixed(2)}`;
+        }
+      })
+  })
 }
 
 btn.addEventListener("click", () => {
@@ -138,7 +90,7 @@ less.addEventListener('click', ()=> {
 
 more.addEventListener('click', ()=> {
    if(number.value >= 0) {
-     number.value ++
+     number.value ++;
      convert();
    }
 });
@@ -157,6 +109,7 @@ reset.addEventListener('click', ()=> {
   div.innerHTML = '$ 0.00';
   option.innerHTML = 'Moeda';
   option.value = '';
+  status.innerHTML = '$ 0.00';
 });
 
 const dropAnim = (val)=> {
@@ -164,10 +117,9 @@ const dropAnim = (val)=> {
   val.classList.toggle('dropon');
 }
 
-
 drop.addEventListener('click', ()=> {
   dropAnim(document.querySelector('#b'));
-})
+});
 
 op.forEach(item => {
   item.addEventListener('click', ()=> {
@@ -179,6 +131,8 @@ op.forEach(item => {
 })
 
 darkmode.addEventListener('click', ()=> {
-  app.classList.toggle('theme-2')
-  app.classList.toggle('theme-1')
-})
+  app.classList.toggle('theme-2');
+  app.classList.toggle('theme-1');
+});
+
+input.focus();

@@ -2,25 +2,12 @@
     background: var(--bgcolor);
     height: 100vh;
     font-family: 'Montserrat', sans-serif;
-    opacity: 1;
     animation: fullfade 1s linear;
 }
 
 @keyframes fullfade {
-    0% {
-        visibility: hidden;
-        width: 0;
+    30% {
         opacity: 0;
-    }
-    
-    5% {
-        visibility: visible;
-        width: 50%;
-    }
-    
-    25% {
-        opacity: 0;
-        width: 100%;
     }
 
     100% {
