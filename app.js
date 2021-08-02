@@ -12,68 +12,55 @@ const op = document.querySelectorAll('.option');
 const darkmode = document.querySelector('#toggle');
 const drop = document.querySelector('#drop')
 const status = document.querySelector('#cotacao');
+const b = document.querySelector('#b');
 
-const calc = (value, coin) => {
-  let f = value / coin;
-  coin = parseFloat(coin);
-  div.innerHTML = '$ ' + f.toFixed(2);
-};
 
-const convert = () => {
-  
-  let v = option.value;
+(function(){
 
   fetch(url)
-    .then((resp) => resp.json())
-    .then((data) => {
+  .then((resp) => resp.json())
+  .then((data) => {
+    const lo = Object.values(data)
 
-      const api = data;
+    lo.forEach(item => {
+      const coin = document.createElement('div');
+      let pc = item.name.indexOf('/');
+      coin.innerHTML = item.name.slice(0, pc);
+      coin.id = item.code;
+      coin.classList.add('option', 'p-2');
+      let price = parseFloat(item.high)
+      coin.setAttribute('price', price);
+      b.appendChild(coin);
+      let sign = item.code;
 
-      const coins = [
-        [`${api.USD.high}`, "dol"], 
-        [`${api.EUR.high}`, "eur"], 
-        [`${api.CAD.high}`, "cad"], 
-        [`${api.LTC.high}`, "ltc"],
-        [`${api.CHF.high}`, "chf"], 
-        [`${api.AUD.high}`, "aud"]
-      ];
-
-      coins.forEach(c => {
-        if (v === c[1]) {
-          calc(number.value, c[0])
-        }
+      coin.addEventListener('click', ()=> {
+        togCl(b, 'dropon', 'dropoff');
+        option.innerHTML = coin.innerHTML;
+        option.id = item.code;
+        option.setAttribute('price', price);
+        option.setAttribute('value', sign);
+        updateStatus();   
       })
+    })
   });
+})();
+
+
+const convert = () => {  
+  let priceVal = option.getAttribute('price');
+  let res = number.value / priceVal;
+  if (option.innerHTML === "Moeda") {
+    return 0
+  }
+  else {
+    div.innerHTML = `$ ${res.toFixed(2)}`;
+  }
 }
 
 const updateStatus = ()=> {
-
-  let val = option.value;
-  const status = document.querySelector('#cotacao');
-
-  fetch(url)
-    .then((resp) => resp.json())
-    .then((data) => {
-
-      const api = data;
-
-      const coins = [
-        [`${api.USD.high}`, "dol"], 
-        [`${api.EUR.high}`, "eur"], 
-        [`${api.CAD.high}`, "cad"], 
-        [`${api.LTC.high}`, "ltc"],
-        [`${api.CHF.high}`, "chf"], 
-        [`${api.AUD.high}`, "aud"]
-      ];
-
-      coins.forEach(c => {
-        if (val === c[1]) {
-          let stts = parseFloat(c[0]);
-          status.innerHTML = `$ ${stts.toFixed(2)}`;
-        }
-      })
-  })
-}
+  let price = option.getAttribute('price');
+  status.innerHTML = '$ ' + parseFloat(price).toFixed(2);
+};
 
 btn.addEventListener("click", () => {
   if(number.value >= 1) {
@@ -112,27 +99,18 @@ reset.addEventListener('click', ()=> {
   status.innerHTML = '$ 0.00';
 });
 
-const dropAnim = (val)=> {
-  val.classList.toggle('dropoff');
-  val.classList.toggle('dropon');
-}
-
 drop.addEventListener('click', ()=> {
-  dropAnim(document.querySelector('#b'));
+  b.classList.toggle('dropon');
+  b.classList.toggle('dropoff');
 });
 
-op.forEach(item => {
-  item.addEventListener('click', ()=> {
-    dropAnim(document.querySelector('#b'));
-    option.innerHTML = item.innerHTML;
-    option.value = item.id;
-    updateStatus();
-  })
-})
+const togCl = (obj, c1, c2) => {
+  obj.classList.toggle(c1);
+  obj.classList.toggle(c2);
+}
 
 darkmode.addEventListener('click', ()=> {
-  app.classList.toggle('theme-2');
-  app.classList.toggle('theme-1');
+  togCl(app, 'theme-1', 'theme-2');
 });
 
 input.focus();

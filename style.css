@@ -101,14 +101,29 @@ a {
 }
 
 .dropon {
+    width: 18rem;
+    height: 30rem;
+    overflow-y: scroll;
     display: inline-block !important;
     color: var(--secondarycolor) !important;
     background: var(--shadow2) !important;
     position: absolute !important;
-    top: 100%;
-    margin-top: 10px;
-    border-radius: 3px;
+    text-align: center;
+    border-radius: 4px;
 }
+
+.dropon::-webkit-scrollbar {
+    /* display: none; */
+    width: 4px;
+  }
+
+.dropon::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.dropon::-webkit-scrollbar-thumb {
+    background: var(--primarycolor);
+  }
 
 .input input {
     width: 100%;
