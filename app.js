@@ -1,18 +1,17 @@
 const url = "https://economia.awesomeapi.com.br/all";
-const div = document.querySelector(".resultado");
-const btn = document.querySelector("#btn");
+const result = document.querySelector("#result");
+const btn = document.querySelector("#btnResult");
 const less = document.querySelector("#less");
-const more = document.querySelector("#more");
+const plus = document.querySelector("#plus");
 const input = document.querySelector("input");
-const reset = document.querySelector("#reset");
+const resetBtn = document.querySelector("#resetBtn");
 const app = document.querySelector('#app');
 const number = document.querySelector("#n");
-const option = document.querySelector('#esc');
-const op = document.querySelectorAll('.option');
+const option = document.querySelector('#selectedCoin');
 const darkmode = document.querySelector('#toggle');
-const drop = document.querySelector('#drop')
-const status = document.querySelector('#cotacao');
-const b = document.querySelector('#b');
+const dropBtn = document.querySelector('#dropBtn');
+const status = document.querySelector('#quotation');
+const dropdown = document.querySelector('#dropdown');
 
 
 (function(){
@@ -20,23 +19,20 @@ const b = document.querySelector('#b');
   fetch(url)
   .then((resp) => resp.json())
   .then((data) => {
-    const lo = Object.values(data)
+    const coins = Object.values(data)
 
-    lo.forEach(item => {
+    coins.forEach(item => {
       const coin = document.createElement('div');
-      let pc = item.name.indexOf('/');
-      coin.innerHTML = item.name.slice(0, pc);
-      coin.id = item.code;
+      let end = item.name.indexOf('/');
+      coin.innerHTML = item.name.slice(0, end);
       coin.classList.add('option', 'p-2');
       let price = parseFloat(item.high)
       coin.setAttribute('price', price);
-      b.appendChild(coin);
+      dropdown.appendChild(coin);
       let sign = item.code;
-
       coin.addEventListener('click', ()=> {
-        togCl(b, 'dropon', 'dropoff');
+        togCl(dropdown, 'dropon', 'dropoff');
         option.innerHTML = coin.innerHTML;
-        option.id = item.code;
         option.setAttribute('price', price);
         option.setAttribute('value', sign);
         updateStatus();   
@@ -45,21 +41,20 @@ const b = document.querySelector('#b');
   });
 })();
 
-
 const convert = () => {  
-  let priceVal = option.getAttribute('price');
-  let res = number.value / priceVal;
+  let convValue = option.getAttribute('price');
+  convValue = number.value / convValue;
   if (option.innerHTML === "Moeda") {
-    return 0
+    return 0;
   }
   else {
-    div.innerHTML = `$ ${res.toFixed(2)}`;
+    result.innerHTML = `$ ${convValue.toFixed(2)}`;
   }
 }
 
 const updateStatus = ()=> {
-  let price = option.getAttribute('price');
-  status.innerHTML = '$ ' + parseFloat(price).toFixed(2);
+  let statusValue = option.getAttribute('price');
+  status.innerHTML = '$ ' + parseFloat(statusValue).toFixed(2);
 };
 
 btn.addEventListener("click", () => {
@@ -75,7 +70,7 @@ less.addEventListener('click', ()=> {
   }
 });
 
-more.addEventListener('click', ()=> {
+plus.addEventListener('click', ()=> {
    if(number.value >= 0) {
      number.value ++;
      convert();
@@ -91,17 +86,16 @@ input.addEventListener("keydown", function(event) {
   }
 });
 
-reset.addEventListener('click', ()=> {
+resetBtn.addEventListener('click', ()=> {
   input.value = '';
-  div.innerHTML = '$ 0.00';
+  result.innerHTML = '$ 0.00';
   option.innerHTML = 'Moeda';
   option.value = '';
   status.innerHTML = '$ 0.00';
 });
 
-drop.addEventListener('click', ()=> {
-  b.classList.toggle('dropon');
-  b.classList.toggle('dropoff');
+dropBtn.addEventListener('click', ()=> {
+  togCl(dropdown, 'dropon', 'dropoff');
 });
 
 const togCl = (obj, c1, c2) => {

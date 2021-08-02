@@ -81,13 +81,13 @@ a {
     text-overflow: '';
 }
 
-#drop svg {
+#dropBtn svg {
     width: 20px;
     fill: var(--secondarycolor);
     transition: all 100ms ease-in-out;
 }
 
-#drop::selection svg {
+#dropBtn::selection svg {
     transform: rotate(0deg);
     transition: all 100ms ease-in-out;
 }
@@ -141,7 +141,7 @@ a {
     box-shadow:  1px 1px 2px var(--shadow1), -1px -1px 2px var(--shadow2);
 }
 
-#cotacao {
+#quotation {
     color: var(--secondarycolor);
 }
 
@@ -158,8 +158,8 @@ a {
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
-  margin: 0;
+    -webkit-appearance: none;
+     margin: 0;
 }
 
 #n::placeholder {
@@ -167,7 +167,7 @@ input::-webkit-inner-spin-button {
     color: var(--placeholder);
 }
 
-#reset {
+#resetBtn {
     margin: 0 auto;
 }
 
@@ -176,25 +176,25 @@ input::-webkit-inner-spin-button {
     width: 25px;
 }
 
-#reset svg {
+#resetBtn svg {
     width: 25px;
     fill: none;
     stroke: var(--secondarycolor);
     stroke-width: 2;
 }
 
-#resultado {
+#result {
     font-weight: 800;
 	text-transform: uppercase;
     border-radius: 8px;
     text-shadow:  4px 4px 7px var(--shadow1), -4px -4px 7px var(--shadow2);
 }
 
-#btn:hover {
+#btnResult:hover {
     color: var(--primarycolor);
 }
 
-#btn svg {
+#btnResult svg {
     width: 25px;
     fill: var(--secondarycolor)
 }
