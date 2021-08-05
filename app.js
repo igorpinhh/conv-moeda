@@ -19,25 +19,29 @@ const dropdown = document.querySelector('#dropdown');
   fetch(url)
   .then((resp) => resp.json())
   .then((data) => {
-    const coins = Object.values(data)
+
+    let coins = Array.from(Object.values(data).slice(1));
 
     coins.forEach(item => {
+
       const coin = document.createElement('div');
-      let end = item.name.indexOf('/');
-      coin.innerHTML = item.name.slice(0, end);
-      coin.classList.add('option', 'p-2');
-      let price = parseFloat(item.high)
-      coin.setAttribute('price', price);
+      let price = parseFloat(item.high);
+
+      coin.innerHTML = item.name.slice(0, item.name.indexOf('/'));
+      coin.setAttribute('class', 'p-2 option');coin.setAttribute('price', price);
       dropdown.appendChild(coin);
       let sign = item.code;
+      
       coin.addEventListener('click', ()=> {
-        togCl(dropdown, 'dropon', 'dropoff');
+        switchClass(dropdown, 'dropon', 'dropoff');
         option.innerHTML = coin.innerHTML;
-        option.setAttribute('price', price);
-        option.setAttribute('value', sign);
+        option.setAttribute('price', price);option.setAttribute('value', sign);
         updateStatus();   
-      })
-    })
+      });
+
+    });
+
+
   });
 })();
 
@@ -88,23 +92,23 @@ input.addEventListener("keydown", function(event) {
 
 resetBtn.addEventListener('click', ()=> {
   input.value = '';
+  option.value = '';
   result.innerHTML = '$ 0.00';
   option.innerHTML = 'Moeda';
-  option.value = '';
   status.innerHTML = '$ 0.00';
 });
 
 dropBtn.addEventListener('click', ()=> {
-  togCl(dropdown, 'dropon', 'dropoff');
+  switchClass(dropdown, 'dropon', 'dropoff');
 });
 
-const togCl = (obj, c1, c2) => {
+const switchClass = (obj, c1, c2) => {
   obj.classList.toggle(c1);
   obj.classList.toggle(c2);
 }
 
 darkmode.addEventListener('click', ()=> {
-  togCl(app, 'theme-1', 'theme-2');
+  switchClass(app, 'theme-1', 'theme-2');
 });
 
 input.focus();
