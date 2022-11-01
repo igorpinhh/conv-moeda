@@ -1,4 +1,4 @@
-const url = "https://economia.awesomeapi.com.br/all";
+const url = "https://economia.awesomeapi.com.br/json/last/USD-BRL,USDT-BRL,CAD-BRL,AUD-BRL,EUR-BRL,GBP-BRL,ARS-BRL,JPY-BRL,CHF-BRL,BTC-BRL,LTC-BRL,CNY-BRL,ILS-BRL";
 const result = document.querySelector("#result");
 const btn = document.querySelector("#btnResult");
 const less = document.querySelector("#less");
@@ -25,7 +25,7 @@ const dropdown = document.querySelector('#dropdown');
     coins.forEach(item => {
 
       const coin = document.createElement('div');
-      let price = parseFloat(item.high);
+      let price = parseFloat(item.low);
 
       coin.innerHTML = item.name.slice(0, item.name.indexOf('/'));
       coin.setAttribute('class', 'p-2 option');coin.setAttribute('price', price);
