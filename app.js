@@ -28,7 +28,7 @@ const dropdown = document.querySelector('#dropdown');
       let price = parseFloat(item.low);
 
       coin.innerHTML = item.name.slice(0, item.name.indexOf('/'));
-      coin.setAttribute('class', 'p-2 option');coin.setAttribute('price', price);
+      coin.setAttribute('class', 'py-3 option');coin.setAttribute('price', price);
       dropdown.appendChild(coin);
       let sign = item.code;
       

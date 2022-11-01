@@ -5,7 +5,7 @@
     animation: fullfade 1s linear;
 }
 
-@keyframes fullfade {
+/* @keyframes fullfade {
     30% {
         opacity: 0;
     }
@@ -13,7 +13,7 @@
     100% {
         opacity: 1;
     }
-}
+} */
 
 .toggle {
     width: 30px;
@@ -101,15 +101,29 @@ a {
 }
 
 .dropon {
-    width: 18rem;
-    height: 30rem;
+    width: 90%;
+    height: 20rem;
     overflow-y: scroll;
     display: inline-block !important;
     color: var(--secondarycolor) !important;
     background: var(--shadow2) !important;
-    position: absolute !important;
+    position: absolute; 
+    left: 0; 
+    right: 0; 
+    margin-left: auto; 
+    margin-right: auto;
     text-align: center;
     border-radius: 4px;
+}
+
+.dropon::-webkit-scrollbar-track {
+box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.option {
+    /* padding:  10px; */
+    
+    border-top: 1px solid rgba(121, 160, 243, 0.1)
 }
 
 .dropon::-webkit-scrollbar {
